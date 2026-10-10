@@ -2,52 +2,15 @@ import {
   ArrowRight,
   CheckCircle2,
   Clock3,
-  FileText,
-  Globe2,
   MapPin,
-  Menu,
   MonitorCog,
   Network,
   Phone,
   Printer,
-  ShieldCheck,
   Sparkles,
-  Wrench,
-  X,
 } from 'lucide-react'
-
-const services = [
-  {
-    icon: Globe2,
-    title: 'Alquiler de computadores',
-    text: 'Conexión estable, equipos listos y acompañamiento para tus tareas digitales.',
-    tag: 'Todos los días',
-  },
-  {
-    icon: FileText,
-    title: 'Elaboración de documentos',
-    text: 'Hojas de vida, cartas, trabajos, impresiones, peticiones, copias, escaneos entre más cosas con acabado profesional.',
-    tag: 'Entrega eficaz',
-  },
-  {
-    icon: Wrench,
-    title: 'Mantenimiento y reparación',
-    text: 'Diagnóstico, limpieza, optimización y reparación para que tus equipos rindan mejor.',
-    tag: 'Servicio técnico',
-  },
-  {
-    icon: Wrench,
-    title: 'Venta de computadores, suministros y accesorios informáticos',
-    text: 'Venta de computadores revisados en excelente estado a diferentes precios.',
-    tag: 'Venta',
-  },
-  {
-    icon: Wrench,
-    title: 'Configuración de tu red WiFi, cableado y puntos de red, instalación de diferentes recursos en tu computador de casa.',
-    text: '',
-    tag: 'A domicilio',
-  }
-]
+import { Header } from '@/components/Header'
+import { services } from '@/lib/services'
 
 const extras = [
   { icon: Printer, title: 'Papelería e impresiones', text: 'Todo lo necesario para trabajos informáticos' },
@@ -60,19 +23,7 @@ const bannerImg = '/ApachSystem.jpg'
 export default function Page() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#072b62] text-white">
-      <header className="sticky top-0 z-40 border-b border-white/20 bg-[#061d42]/95 text-white shadow-lg backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8">
-          <a href="#inicio" className="flex items-center gap-3" aria-label="ApachSystem inicio">
-            <div className="grid size-11 place-items-center rounded-2xl bg-[#ffd514] font-black text-xl text-[#061d42] shadow-md">A</div>
-            <div className="leading-none"><p className="font-black tracking-tight">Apach<span className="text-[#ffd514]">System</span></p><p className="mt-1 text-[10px] font-bold uppercase tracking-[0.2em] text-cyan-200">Soluciones informáticas</p></div>
-          </a>
-          <nav className="hidden items-center gap-8 text-sm font-semibold md:flex" aria-label="Navegación principal">
-            <a className="transition hover:text-[#ffd514]" href="#servicios">Servicios</a><a className="transition hover:text-[#ffd514]" href="#variedades">Variedades</a><a className="transition hover:text-[#ffd514]" href="#contacto">Contacto</a>
-          </nav>
-          <a href="https://wa.me/573158387804" className="hidden rounded-full bg-[#1cc878] px-5 py-2.5 text-sm font-extrabold text-white shadow-lg shadow-emerald-950/30 transition hover:-translate-y-0.5 hover:bg-[#13b467] sm:inline-flex">Escríbenos por WhatsApp</a>
-          <button className="rounded-lg p-2 md:hidden" aria-label="Abrir menú"><Menu /></button>
-        </div>
-      </header>
+      <Header />
       
       <section id="inicio" className="relative isolate overflow-hidden border-b border-white/10 bg-[#072b62] pt-8">
         
@@ -98,7 +49,7 @@ export default function Page() {
         
       </section>
 
-      <section id="servicios" className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28"><div className="max-w-2xl"><p className="font-bold uppercase tracking-[0.18em] text-cyan-300">Lo que hacemos</p><h2 className="mt-3 text-4xl font-black tracking-tight text-white sm:text-5xl">Todo lo que necesitas, <span className="text-[#ffd514]">más cerca.</span></h2><p className="mt-5 text-lg leading-8 text-blue-100">Desde una impresión hasta el mantenimiento de tu computador: resolvemos tus necesidades con experiencia y buena atención.</p></div><div className="mt-12 grid gap-5 md:grid-cols-3">{services.map(({ icon: Icon, title, text, tag }) => <article key={title} className="group rounded-3xl border border-white/10 bg-white p-7 shadow-sm transition hover:-translate-y-2 hover:border-cyan-200 hover:shadow-xl"><div className="flex items-start justify-between"><div className="grid size-14 place-items-center rounded-2xl bg-cyan-50 text-[#0789b2] transition group-hover:bg-[#0789b2] group-hover:text-white"><Icon className="size-7" /></div><span className="rounded-full bg-yellow-50 px-3 py-1 text-xs font-bold text-yellow-700">{tag}</span></div><h3 className="mt-7 text-xl font-extrabold text-[#071c3b]">{title}</h3><p className="mt-3 leading-7 text-slate-600">{text}</p><a href="#contacto" className="mt-6 inline-flex items-center gap-2 text-sm font-extrabold text-[#0789b2]">Solicitar servicio <ArrowRight className="size-4 transition group-hover:translate-x-1" /></a></article>)}</div></section>
+      <section id="servicios" className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-28"><div className="max-w-2xl"><p className="font-bold uppercase tracking-[0.18em] text-cyan-300">Lo que hacemos</p><h2 className="mt-3 text-4xl font-black tracking-tight text-white sm:text-5xl">Todo lo que necesitas, <span className="text-[#ffd514]">más cerca.</span></h2><p className="mt-5 text-lg leading-8 text-blue-100">Desde una impresión hasta el mantenimiento de tu computador: resolvemos tus necesidades con experiencia y buena atención.</p></div><div className="mt-12 grid gap-5 md:grid-cols-3">{services.map(({ icon: Icon, title, text, tag, slug }) => <article key={slug} className="group rounded-3xl border border-white/10 bg-white p-7 shadow-sm transition hover:-translate-y-2 hover:border-cyan-200 hover:shadow-xl"><div className="flex items-start justify-between"><div className="grid size-14 place-items-center rounded-2xl bg-cyan-50 text-[#0789b2] transition group-hover:bg-[#0789b2] group-hover:text-white"><Icon className="size-7" /></div><span className="rounded-full bg-yellow-50 px-3 py-1 text-xs font-bold text-yellow-700">{tag}</span></div><h3 className="mt-7 text-xl font-extrabold text-[#071c3b]">{title}</h3><p className="mt-3 leading-7 text-slate-600">{text}</p><a href={`/detalles#detalle-${slug}`} className="mt-6 inline-flex items-center gap-2 text-sm font-extrabold text-[#0789b2]">Ver servicio <ArrowRight className="size-4 transition group-hover:translate-x-1" /></a></article>)}</div></section>
 
       <section id="variedades" className="border-y border-white/10 bg-white/5"><div className="mx-auto max-w-7xl px-5 py-20 lg:px-8"><div className="flex flex-col justify-between gap-6 md:flex-row md:items-end"><div><p className="font-bold uppercase tracking-[0.18em] text-cyan-300">También encuentras</p><h2 className="mt-3 text-4xl font-black tracking-tight text-white">Variedades para tu día</h2></div><p className="max-w-md text-blue-100">Productos electrónicos, papelería, dulces y servicios que hacen más fácil tu rutina.</p></div><div className="mt-10 grid gap-4 md:grid-cols-3">{extras.map(({ icon: Icon, title, text }) => <div key={title} className="flex items-center gap-5 rounded-2xl border border-white/10 bg-white p-5 shadow-sm"><div className="grid size-12 shrink-0 place-items-center rounded-xl bg-[#071c3b] text-[#ffd514]"><Icon className="size-6" /></div><div><h3 className="font-extrabold text-[#071c3b]">{title}</h3><p className="mt-1 text-sm text-slate-500">{text}</p></div></div>)}</div></div></section>
 
